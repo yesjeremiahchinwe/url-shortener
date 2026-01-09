@@ -79,7 +79,7 @@ body {
   cursor: not-allowed;
 }
 
-/* This is for mobile */
+/* This is for mobile side of it*/
 
 @media (max-width: 600px) {
   .prefooter {
