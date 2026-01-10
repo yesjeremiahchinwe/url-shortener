@@ -1,7 +1,10 @@
 :root {
   /* Primary */
   --blue-400: hsl(180, 66%, 49%);
+  --light-blue-400: hsl(179, 56%, 75%);
   --purple-950: hsl(257, 27%, 26%);
+
+  --white: hsl(0, 0%, 100%);
 
   /* Secondary */
   --red-400: hsl(0, 87%, 67%);
