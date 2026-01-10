@@ -1,35 +1,9 @@
-:root {
-  /* Primary */
-  --blue-400: hsl(180, 66%, 49%);
-  --purple-950: hsl(257, 27%, 26%);
-
-  /* Secondary */
-  --red-400: hsl(0, 87%, 67%);
-
-  /* Neutral */
-
-  --gray-400: hsl(0, 0%, 75%);
-  --gray-500: hsl(257, 7%, 63%);
-  --gray-900: hsl(255, 11%, 22%);
-  --gray-950: hsl(260, 8%, 14%);
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-}
 footer {
   background-color: hsl(260, 8%, 14%);
   color: hsl(0, 0%, 75%);
   padding: 3rem 2rem;
 }
+
 .footer-container {
   max-width: 1100px;
   margin: 0 auto;

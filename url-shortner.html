@@ -1,18 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <link
+    <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500;0,700;1,800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles/url-shortener.css">
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/url-shortener.css" />
+  </head>
+  <body>
+    <section class="url_shortener_container">
+      <form class="input_wrapper" id="url_shortener_form">
+        <div>
+          <input
+            type="text"
+            placeholder="Shorten a link here..."
+            id="url_shortener_input"
+            class="url_input"
+          />
+
+          <button type="submit">Shorten it!</button>
+        </div>
+
+        <small class="input_error_message">Please add a link</small>
+      </form>
+
+      <div class="urls_wrapper">
+        <div class="url">
+          <span class="original_url">htts://www.frontendmentor.io</span>
+
+          <div class="shortened_url_wrapper">
+            <span class="shortened_url">htts://relink/ghfjdj</span>
+
+            <button class="copy_url_btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="url">
+          <span class="original_url">htts://www.frontendmentor.io</span>
+
+          <div class="shortened_url_wrapper">
+            <span class="shortened_url">htts://relink/ghfjdj</span>
+
+            <button class="copy_url_btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="url">
+          <span class="original_url">htts://www.frontendmentor.io</span>
+
+          <div class="shortened_url_wrapper">
+            <span class="shortened_url">htts://relink/ghfjdj</span>
+
+            <button class="copy_url_btn">Copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="./js/main.js"></script>
+  </body>
 </html>
