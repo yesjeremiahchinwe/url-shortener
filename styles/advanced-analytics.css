@@ -24,4 +24,134 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 18px;
+  color: var(--gray-900);
+  overflow-x: hidden;
+}
+
+.container {
+  background: #f0f1f6;
+  padding: 5rem 0 8rem;
+  text-align: center;
+}
+
+.container-intro h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.container-intro p {
+  color: var(--gray-500);
+  max-width: 600px;
+  margin: 0 auto 4rem;
+  line-height: 30px;
+}
+
+/* line connecting the cards */
+.cards {
+  display: flex;
+  gap: 2rem;
+  align-items: start;
+  position: relative;
+}
+
+.cards::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--blue-400);
+  z-index: 0;
+}
+
+.content{
+  padding: 4rem;
+}
+
+.card {
+  background: white;
+  padding: 4rem 2rem 2rem;
+  border-radius: 10px;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+.card p {
+  color: var(--gray-500);
+  line-height: 30px;
+  margin-top: 15px;
+}
+
+.card-icon {
+  background: var(--gray-950);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: absolute;
+  top: -40px;
+  left: 2rem;
+  color: white;
+  font-size: 2rem;
+}
+
+/* Staggered effect for cards */
+.card:nth-child(2) {
+  transform: translateY(40px);
+}
+.card:nth-child(3) {
+  transform: translateY(80px);
+}
+
+/* Responsive adjustments for mobile view */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    gap: 100px;
+    padding: 1rem;
+ }
+
+ .card {
+  text-align: center;
+ }
+
+ .card p {
+  color: var(--gray-500);
+  padding: 0.3rem;
+ }
+
+ .content {
+  padding: 0;
+ }
+
+ /* Vertical line for mobile view */
+  .cards::before {
+    width: 8px;
+    height: 90%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .card-icon {
+    left: 42%;
+  }
+
+  .container-intro {
+    padding: 1.2rem;
+  }
+
+  .card:nth-child(2), .card:nth-child(3) {
+    transform: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .card-icon {
+    left: 39%;
+  }
 }
