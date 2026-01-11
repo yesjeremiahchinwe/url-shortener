@@ -107,3 +107,51 @@ body {
   transform: translateY(80px);
 }
 
+/* Responsive adjustments for mobile view */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    gap: 100px;
+    padding: 1rem;
+ }
+
+ .card {
+  text-align: center;
+ }
+
+ .card p {
+  color: var(--gray-500);
+  padding: 0.3rem;
+ }
+
+ .content {
+  padding: 0;
+ }
+
+ /* Vertical line for mobile view */
+  .cards::before {
+    width: 8px;
+    height: 90%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .card-icon {
+    left: 42%;
+  }
+
+  .container-intro {
+    padding: 1.2rem;
+  }
+
+  .card:nth-child(2), .card:nth-child(3) {
+    transform: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .card-icon {
+    left: 39%;
+  }
+}
