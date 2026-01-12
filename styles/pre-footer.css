@@ -1,27 +1,79 @@
-:root {
-  /* Primary */
-  --blue-400: hsl(180, 66%, 49%);
-  --purple-950: hsl(257, 27%, 26%);
-
-  /* Secondary */
-  --red-400: hsl(0, 87%, 67%);
-
-  /* Neutral */
-
-  --gray-400: hsl(0, 0%, 75%);
-  --gray-500: hsl(257, 7%, 63%);
-  --gray-900: hsl(255, 11%, 22%);
-  --gray-950: hsl(260, 8%, 14%);
+.prefooter {
+  background-color: #3b3054;
+  background-image: url("https://res.cloudinary.com/dwtrg3n7g/image/upload/v1767882773/bg-boost-desktop_pf9z5y.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  padding: 70px 20px;
+  min-height: 260px;
+  
+  color: #ffffff;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.prefooter h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 18px;
+
+.prefooter-btn {
+  background-color: #2acfcf;
+  color: #ffffff;
+  
+  padding: 14px 40px;
+  border-radius: 30px;
+  
+  font-size: 1rem;
+  font-weight: 700;
+  
+  border: none;
+  cursor: pointer;
+  
+  transition: background-color 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+.prefooter-btn:hover {
+  background-color: #9be3e2;
+  color: #000;
+}
+
+.prefooter-btn:active {
+  background-color: #1cbaba;
+  transform: scale(0.97);
+}
+
+.prefooter-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(42, 207, 207, 0.45);
+}
+
+
+.prefooter-btn:disabled {
+  background-color: #b5b5b5;
+  color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+/* This is for mobile side of it*/
+
+@media (max-width: 600px) {
+  .prefooter {
+    background-image: url("https://res.cloudinary.com/dwtrg3n7g/image/upload/v1767882839/bg-boost-mobile_blisjv.svg");
+    min-height: 220px;
+    padding: 60px 16px;
+  }
+  
+  .prefooter h2 {
+    font-size: 1.8rem;
+  }
 }

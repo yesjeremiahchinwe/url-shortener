@@ -1,27 +1,123 @@
-:root {
-  /* Primary */
-  --blue-400: hsl(180, 66%, 49%);
-  --purple-950: hsl(257, 27%, 26%);
-
-  /* Secondary */
-  --red-400: hsl(0, 87%, 67%);
-
-  /* Neutral */
-
-  --gray-400: hsl(0, 0%, 75%);
-  --gray-500: hsl(257, 7%, 63%);
-  --gray-900: hsl(255, 11%, 22%);
-  --gray-950: hsl(260, 8%, 14%);
+.url_shortener_container {
+  background-color: var(--gray-400);
+  height: 100vh;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.input_wrapper {
+  width: 62%;
+  margin: 0 auto;
+  background-image: url("../images/bg-shorten-desktop.svg");
+  background-size: cover;
+  background-color: var(--purple-950);
+  padding: 2rem 2.5rem;
+  border-radius: 8px;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
+.input_wrapper div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.input_error_message {
+  color: var(--red-400);
+  display: none;
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+.show_input_error_message {
+  display: block;
+}
+
+.url_input {
+  padding: 1rem 1.5rem;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background-color: var(--white);
+  width: 100%;
+}
+
+.url_input:focus {
+  border: 2px solid var(--blue-400);
+}
+
+.url_input::placeholder {
+  color: var(--gray-500);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1rem;
+}
+
+.input_error {
+  border: 2px solid red;
+}
+
+.input_wrapper button {
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  white-space: nowrap;
+  background-color: var(--blue-400);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.input_wrapper button:hover {
+  background-color: var(--light-blue-400);
+}
+
+.urls_wrapper {
+  width: 62%;
+  margin: 1rem auto;
+}
+
+.url {
+  background-color: var(--white);
+  border-radius: 6px;
+  padding: 0.85rem 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.65rem 0;
+}
+
+.url .original_url {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--gray-950);
+}
+
+.url .shortened_url_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.url .shortened_url {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--blue-400);
+}
+
+.url .copy_url_btn {
+  border: none;
+  border-radius: 5px;
+  padding: 0.45rem 1.25rem;
+  white-space: nowrap;
+  background-color: var(--blue-400);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.url .copy_url_btn:hover {
+  background-color: var(--purple-950);
 }
