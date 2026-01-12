@@ -1,7 +1,5 @@
-.url_shortener_container {
-  background-color: var(--gray-400);
-  height: 100vh;
-}
+/* .url_shortener_container {
+} */
 
 .input_wrapper {
   width: 62%;
@@ -23,6 +21,7 @@
 .input_error_message {
   color: var(--red-400);
   display: none;
+  text-align: start;
   font-size: 0.85rem;
   margin-top: 0.35rem;
 }
