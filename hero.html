@@ -1,18 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <link
+    <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500;0,700;1,800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles/hero.css">
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="styles/hero.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container nav">
+        <div class="nav-left">
+          <img src="images/logo.svg" alt="Shortly" />
+
+          <nav class="nav-links">
+            <ul>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Resources</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="auth">
+          <a href="#" class="login">Login</a>
+          <button class="signup">Sign Up</button>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>More than just shorter links</h1>
+          <p>
+            Build your brand's recognition and get detailed insights on how your
+            links are performing.
+          </p>
+          <button class="cta-btn">Get Started</button>
+        </div>
+        <div class="hero-image">
+          <img
+            src="images/illustration-working.svg"
+            alt="Working Illustration"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- URL SHORTENER BOX -->
+    <section class="shorten">
+      <div class="container shorten-box">
+        <input type="text" id="urlInput" placeholder="Shorten a link here..." />
+        <button id="shortenBtn">Shorten It!</button>
+      </div>
+      <p class="error-msg" id="errorMsg"></p>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
 </html>
