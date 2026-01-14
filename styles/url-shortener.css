@@ -142,6 +142,9 @@
 .urls_wrapper {
   width: 90%;
   margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .url {
@@ -157,6 +160,51 @@
   margin: 0.65rem 0;
   position: relative;
   top: -55px;
+}
+
+.url_actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.url .delete_url_btn {
+  border: none;
+  border-radius: 5px;
+  padding: 0.45rem 1.25rem;
+  white-space: nowrap;
+  background-color: var(--red-400);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.url .delete_url_btn:hover {
+  background-color: #f46262b7;
+}
+
+.clear_all_btn {
+  border: none;
+  border-radius: 5px;
+  padding: 0.45rem 1.25rem;
+  white-space: nowrap;
+  background-color: var(--red-400);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  top: -60px;
+  margin-left: auto;
+  align-items: flex-end;
+  display: none;
+}
+
+.clear_all_btn:hover {
+  background-color: #f46262b7;
 }
 
 .url .original_url {
