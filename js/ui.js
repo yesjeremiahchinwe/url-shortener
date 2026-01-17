@@ -7,7 +7,6 @@ export function renderUrl({ originalUrl, shortenedUrl }, wrapper) {
     <span class="original_url">${originalUrl}</span>
     <div class="shortened_url_wrapper">
       <span class="shortened_url">${shortenedUrl}</span>
-
       
       <div class="url_actions">
         <button class="copy_url_btn" data-url="${shortenedUrl}">
@@ -31,4 +30,26 @@ export function clearUrlsUI(wrapper) {
 export function toggleClearAllBtn(button, hasUrls) {
   button.style.display = hasUrls ? "flex" : "none";
 }
+
+let toastTimeout;
+
+export function showToast(message, type = "success") {
+  let toast = document.getElementById("toast");
+
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast";
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = message;
+  toast.className = `toast show ${type}`;
+
+  clearTimeout(toastTimeout);
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 5000);
+}
+
 

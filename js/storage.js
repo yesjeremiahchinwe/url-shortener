@@ -5,12 +5,17 @@ export function getStoredUrls() {
 }
 
 export function saveUrl(originalUrl, shortenedUrl) {
-  const urls = getStoredUrls();
+  const urls = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
-  urls.push({ originalUrl, shortenedUrl });
+  const newUrl = { originalUrl, shortenedUrl }
+
+  urls.unshift(newUrl);
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(urls));
+
+  return newUrl
 }
+
 
 export function deleteUrl(shortenedUrl) {
   const urls = getStoredUrls().filter(

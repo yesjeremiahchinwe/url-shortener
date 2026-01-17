@@ -1,16 +1,15 @@
 import { shortenUrl } from "./api.js";
 import { clearAllUrls, getStoredUrls, saveUrl } from "./storage.js";
-import { clearUrlsUI, renderUrl, toggleClearAllBtn } from "./ui.js";
+import { clearUrlsUI, renderUrl, showToast, toggleClearAllBtn } from "./ui.js";
 import { handleUrlActions } from "./actions.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("url_shortener_form");
+  const urlShortenerBtn = document.getElementById("url_shortener_btn");
   const input = document.getElementById("url_shortener_input");
   const urlsWrapper = document.querySelector(".urls_wrapper");
   const clearAllBtn = document.getElementById("clear_all_btn");
   const inputErrorMessage = document.querySelector(".input_error_message");
-  const mobileMenuIconWrapper = document.querySelector(".menu_icon");
-  const mobileNavigation = document.querySelector(".mobile_nav");
 
   /* Load URLs from localStorage on page load */
   const storedUrls = getStoredUrls();
@@ -32,26 +31,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     input.classList.remove("input_error");
+
     inputErrorMessage.classList.remove("show_input_error_message");
 
-    const shortenedUrl = await shortenUrl(input.value);
+    // 🔄 Loading state
+    urlShortenerBtn.textContent = "Shortening...";
+    urlShortenerBtn.classList.add("loading");
 
-    const newUrl = {
-      originalUrl: input.value,
-      shortenedUrl,
-    };
+    // No internet
+    if (!navigator.onLine) {
+      urlShortenerBtn.textContent = "Shorten";
+      urlShortenerBtn.classList.remove("loading");
+      showToast("🚫 No internet connection! Check your network.", "error");
+      return;
+    }
 
-    /* Save to localStorage */
-    saveUrl(input.value, shortenedUrl);
+    try {
+      const shortenedUrl = await shortenUrl(input.value);
 
-    /* Render to UI */
-    renderUrl(newUrl, urlsWrapper);
+      /* Save to localStorage */
+      const savedUrl = saveUrl(input.value, shortenedUrl);
 
-    
-    /* Show Clear All immediately */
-    toggleClearAllBtn(clearAllBtn, true);
+      /* Render to UI */
+      renderUrl(savedUrl, urlsWrapper);
 
-    input.value = "";
+      showToast("Url shortened successfully!");
+
+      urlShortenerBtn.textContent = "Shorten";
+      urlShortenerBtn.classList.remove("loading");
+
+      /* Show Clear All immediately */
+      toggleClearAllBtn(clearAllBtn, true);
+
+      input.value = "";
+    } catch (err) {
+      showToast("Failed to shorten URL. Try again.");
+      console.error(err);
+    } finally {
+      shortenBtn.textContent = "Shorten";
+      shortenBtn.classList.remove("loading");
+    }
   });
 
   /* Clear All */
@@ -59,11 +78,11 @@ document.addEventListener("DOMContentLoaded", () => {
     clearAllUrls();
     clearUrlsUI(urlsWrapper);
 
-     /* Hide Clear All */
+    /* Hide Clear All */
     toggleClearAllBtn(clearAllBtn, false);
-  });
 
-  mobileMenuIconWrapper.addEventListener("click", () => {
-    mobileNavigation.classList.toggle("show_mobile_nav");
+    showToast("You've cleared your storage successfully!");
+
+    window.location.reload()
   });
 });
