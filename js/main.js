@@ -3,6 +3,18 @@ import { clearAllUrls, getStoredUrls, saveUrl } from "./storage.js";
 import { clearUrlsUI, renderUrl, showToast, toggleClearAllBtn } from "./ui.js";
 import { handleUrlActions } from "./actions.js";
 
+let isOnline = navigator.onLine;
+
+window.addEventListener("offline", () => {
+  isOnline = false;
+
+  showToast("🚫 No internet connection! Check your network.", "error");
+});
+
+window.addEventListener("online", () => {
+  isOnline = true;
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("url_shortener_form");
   const urlShortenerBtn = document.getElementById("url_shortener_btn");
@@ -34,34 +46,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     inputErrorMessage.classList.remove("show_input_error_message");
 
-    // 🔄 Loading state
-    urlShortenerBtn.textContent = "Shortening...";
-    urlShortenerBtn.classList.add("loading");
-
-    // No internet
-    if (!navigator.onLine) {
-      urlShortenerBtn.textContent = "Shorten";
-      urlShortenerBtn.classList.remove("loading");
+    if (!isOnline) {
       showToast("🚫 No internet connection! Check your network.", "error");
       return;
     }
 
+    // 🔄 Loading state
+    urlShortenerBtn.textContent = "Shortening...";
+    urlShortenerBtn.classList.add("loading");
+
     try {
       const shortenedUrl = await shortenUrl(input.value);
 
-      /* Save to localStorage */
-      const savedUrl = saveUrl(input.value, shortenedUrl);
+      if (shortenUrl !== undefined) {
+        /* Save to localStorage */
+        const savedUrl = saveUrl(input.value, shortenedUrl);
 
-      /* Render to UI */
-      renderUrl(savedUrl, urlsWrapper);
+        /* Render to UI */
+        renderUrl(savedUrl, urlsWrapper);
 
-      showToast("Url shortened successfully!");
+        showToast("Url shortened successfully!");
 
-      /* Show Clear All immediately */
-      const updatedUrls = getStoredUrls();
-      toggleClearAllBtn(clearAllBtn, updatedUrls.length > 1);
+        /* Show Clear All immediately */
+        const updatedUrls = getStoredUrls();
+        toggleClearAllBtn(clearAllBtn, updatedUrls.length > 1);
 
-      input.value = "";
+        input.value = "";
+      }
     } catch (err) {
       showToast("Failed to shorten URL. Try again.");
     } finally {

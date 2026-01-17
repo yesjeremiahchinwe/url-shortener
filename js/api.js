@@ -5,6 +5,11 @@ export async function shortenUrl(longUrl) {
     const response = await fetch(
       `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`
     )
+
+    if (!response.ok) {
+       showToast("Error Occured: ", "error");
+       return
+    }
      
     const result = await response.text()
 
@@ -12,5 +17,6 @@ export async function shortenUrl(longUrl) {
 
   } catch (error) {
     showToast("Error Occured: ", "error");
+    return
   }
 }
