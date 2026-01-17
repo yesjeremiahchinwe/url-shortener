@@ -36,11 +36,37 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+     let longUrl = input.value.trim();
+
     if (!input.value.trim()) {
       input.classList.add("input_error");
       inputErrorMessage.classList.add("show_input_error_message");
       return;
     }
+
+    // -------- URL VALIDATION --------
+    // Auto-add https:// if missing
+    if (!/^https?:\/\//i.test(longUrl)) {
+      longUrl = "https://" + longUrl;
+    }
+
+    // Validate URL format
+    try {
+      const urlObj = new URL(longUrl);
+
+      // Optional: block non-web protocols just in case
+      if (!["http:", "https:"].includes(urlObj.protocol)) {
+        showToast("Only http and https URLs are allowed");
+        return;
+      }
+    } catch {
+      showToast("Please enter a valid URL");
+      return;
+    }
+
+    // Update input value after validation
+    input.value = longUrl;
+    // -------- END VALIDATION --------
 
     input.classList.remove("input_error");
 
