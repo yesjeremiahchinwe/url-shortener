@@ -1,3 +1,5 @@
+import { showToast } from "./ui.js";
+
 export async function shortenUrl(longUrl) {
   try {
     const response = await fetch(
@@ -9,6 +11,6 @@ export async function shortenUrl(longUrl) {
     return result
 
   } catch (error) {
-    console.log("Error Occured: ", error);
+    showToast("Error Occured: ", "error");
   }
 }

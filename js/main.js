@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   storedUrls.forEach((url) => renderUrl(url, urlsWrapper));
 
-  toggleClearAllBtn(clearAllBtn, storedUrls.length > 0);
+  toggleClearAllBtn(clearAllBtn, storedUrls.length > 1);
 
   /* Enable copy + delete */
-  handleUrlActions(urlsWrapper);
+  handleUrlActions(urlsWrapper, clearAllBtn);
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -57,19 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       showToast("Url shortened successfully!");
 
-      urlShortenerBtn.textContent = "Shorten";
-      urlShortenerBtn.classList.remove("loading");
-
       /* Show Clear All immediately */
-      toggleClearAllBtn(clearAllBtn, true);
+      const updatedUrls = getStoredUrls();
+      toggleClearAllBtn(clearAllBtn, updatedUrls.length > 1);
 
       input.value = "";
     } catch (err) {
       showToast("Failed to shorten URL. Try again.");
-      console.error(err);
     } finally {
-      shortenBtn.textContent = "Shorten";
-      shortenBtn.classList.remove("loading");
+      urlShortenerBtn.textContent = "Shorten";
+      urlShortenerBtn.classList.remove("loading");
     }
   });
 
@@ -83,6 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showToast("You've cleared your storage successfully!");
 
-    window.location.reload()
+    window.location.reload();
   });
 });

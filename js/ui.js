@@ -49,7 +49,7 @@ export function showToast(message, type = "success") {
 
   toastTimeout = setTimeout(() => {
     toast.classList.remove("show");
-  }, 5000);
+  }, 2000);
 }
 
 
